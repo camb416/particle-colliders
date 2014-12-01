@@ -23,6 +23,7 @@ void Boid::setup(){
     vF = ofRandomf()*1.0f+3.0f;
     r = ofRandomf()*TWO_PI;
     size = ofRandomf()*2.5f+5;
+    o = ofRandomf()*0.75f + 0.25f;
 }
 void Boid::update(){
     size *= 0.99f;
@@ -39,5 +40,7 @@ void Boid::update(){
     y += vY;
 }
 void Boid::draw(){
+    ofEnableAlphaBlending();
+    ofSetColor(255,255,255,o*255);
         ofCircle(x,y,size);
 }
