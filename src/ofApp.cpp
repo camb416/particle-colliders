@@ -11,7 +11,7 @@ void ofApp::setup(){
         
     }
     
-   // ofSetBackgroundAuto(false);
+    ofSetBackgroundAuto(false);
     ofBackground(255);
 }
 

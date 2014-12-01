@@ -18,29 +18,59 @@ void Boid::setup(){
     x = ofGetWidth()/2;
     y = ofGetHeight()/2;
     vX = vY = vF = 0;
-    aX = aY = aF = 0;
-    vR = ofRandomf()*0.1f;
-    vF = ofRandomf()*1.0f+3.0f;
+    aX = aF = 0;
+    aY = 0.1f;
+    // vR = ofRandomf()*0.1f;
+    vR = 0;
+    vF = ofRandomf()*1.0f+2.0f;
     r = ofRandomf()*TWO_PI;
     size = 2;
     o = ofRandomf()*0.75f + 0.25f;
+    vX = cos(r)*vF;
+    vY = sin(r)*vF;
 }
 void Boid::update(){
    // size *= 0.99f;
-    vF *= 0.985f;
-    vR *= 0.985f;
+
+    
+    //vF *= 0.99f;
+    //vR *= 0.99f;
     r += vR;
-    vX = cos(r)*vF;
-    vY = sin(r)*vF;
+    //vX = cos(r)*vF;
+    //vY = sin(r)*vF;
+    
+    aF = -128.0f/ MAX(ofDistSquared(x, y, ofGetMouseX(), ofGetMouseY()),64);
+    float mouseR = atan2(y-ofGetMouseY(),x-ofGetMouseX());
+    aX = cos(mouseR)*aF;
+    aY = sin(mouseR)*aF;
+    
+    
     
     vX += aX;
     vY += aY;
     
+    vX *= 0.98f;
+    vY *= 0.98f;
+    //vF = sqrt(vX*vX+vY*vY);
+    //vF*=0.99f;
+    
+    
+    
+
+    
     x += vX;
     y += vY;
+    
+    if(y+vY>ofGetHeight()){
+        y = ofGetHeight();
+        vY*=-0.9f;
+        vX*=0.9f;
+    }
 }
 void Boid::draw(){
     ofEnableAlphaBlending();
+    ofSetColor(255,255,255,o*255);
+    ofCircle(x-1,y-1,size);
     ofSetColor(0,0,0,o*255);
-        ofCircle(x,y,size);
+    ofCircle(x,y,size);
 }
