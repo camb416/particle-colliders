@@ -1,6 +1,6 @@
 #include "ofApp.h"
 
-int numBoids = 1024;
+int numBoids = 4096;
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -11,8 +11,8 @@ void ofApp::setup(){
         
     }
     
-    ofSetBackgroundAuto(false);
-    ofBackground(0);
+   // ofSetBackgroundAuto(false);
+    ofBackground(255);
 }
 
 //--------------------------------------------------------------

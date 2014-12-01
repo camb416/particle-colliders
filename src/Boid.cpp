@@ -22,13 +22,13 @@ void Boid::setup(){
     vR = ofRandomf()*0.1f;
     vF = ofRandomf()*1.0f+3.0f;
     r = ofRandomf()*TWO_PI;
-    size = ofRandomf()*2.5f+5;
+    size = 2;
     o = ofRandomf()*0.75f + 0.25f;
 }
 void Boid::update(){
-    size *= 0.99f;
-    vF *= 0.99f;
-    vR *= 0.99f;
+   // size *= 0.99f;
+    vF *= 0.985f;
+    vR *= 0.985f;
     r += vR;
     vX = cos(r)*vF;
     vY = sin(r)*vF;
@@ -41,6 +41,6 @@ void Boid::update(){
 }
 void Boid::draw(){
     ofEnableAlphaBlending();
-    ofSetColor(255,255,255,o*255);
+    ofSetColor(0,0,0,o*255);
         ofCircle(x,y,size);
 }
