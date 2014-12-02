@@ -1,6 +1,6 @@
 #include "ofApp.h"
 
-int numBoids = 8192*8;
+int numBoids = 1024;
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -27,10 +27,30 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    int lineCount = 0;
+    int lineMax = 4096;
+    //ofSetPolyMode(OF_POLY_WINDING_NONZERO);
+    //ofBeginShape();
+    //ofSetColor(0,0,0,32);
     for(int i=0;i<numBoids;i++){
         Boid * b = boids.at(i);
         b->draw();
+        //ofLine(boids.at(i)->x, boids.at(i)->y,boids.at(i-1)->x,boids.at(i-1)->y);
+         if(lineCount<lineMax){
+        for(int j=0;j<i;j++){
+            Boid * b2 = boids.at(j);
+           
+            if(ofDist(b->x,b->y,b2->x,b2->y)<20){
+                lineCount++;
+                ofSetColor(j%255,0,255-i%255,32);
+                ofLine(b->x,b->y,b2->x,b2->y);
+            }
+            }
+            
+        }
     }
+  //  ofEndShape();
+
 }
 
 //--------------------------------------------------------------
