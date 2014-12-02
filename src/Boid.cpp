@@ -44,7 +44,12 @@ void Boid::update(){
     //vX = cos(r)*vF;
     //vY = sin(r)*vF;
     
-    aF = -128.0f/ MAX(ofDistSquared(x, y, ofGetMouseX(), ofGetMouseY()),64);
+    if(ofGetMousePressed()){
+        aF = -128.0f/ MAX(ofDistSquared(x, y, ofGetMouseX(), ofGetMouseY()),64);
+        
+    } else {
+        aF = 0;
+    }
     float mouseR = atan2(y-ofGetMouseY(),x-ofGetMouseX());
     aX = cos(mouseR)*aF;
     aY = sin(mouseR)*aF;
@@ -76,9 +81,9 @@ void Boid::update(){
     
 }
 void Boid::draw(){
-    ofSetLineWidth(size);
+    ofSetLineWidth(1);
    // ofEnableAlphaBlending();
-   // ofSetColor(255,255,255,o*255);
+    // ofSetColor(255,255,255,o*255);
    // ofLine(x-1,y-1,pX-1,pY-1);
     //ofCircle(x-1,y-1,size);
     ofSetColor(0,0,0,o*255);

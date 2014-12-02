@@ -1,6 +1,6 @@
 #include "ofApp.h"
 
-int numBoids = 8192*2;
+int numBoids = 8192*8;
 //--------------------------------------------------------------
 void ofApp::setup(){
 
