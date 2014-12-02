@@ -91,9 +91,9 @@ void Boid::update(){
         vY*=-0.9f;
         vX*=0.9f;
     }
-    size = aF;
+    size = vX+vY;
     if(size<0) size *= -1.0f;
-    size += 0.5f;
+   
 
     
 }

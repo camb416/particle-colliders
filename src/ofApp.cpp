@@ -1,6 +1,6 @@
 #include "ofApp.h"
 
-int numBoids = 256;
+int numBoids = 32;
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -27,6 +27,10 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    ofSetColor(255,255,255,4);
+    ofRect(0,0,ofGetWidth(),ofGetHeight());
+    
+    
     int lineCount = 0;
     int lineMax = 4096;
     //ofSetPolyMode(OF_POLY_WINDING_NONZERO);
