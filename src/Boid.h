@@ -22,6 +22,7 @@ public:
     float aX,aY,aF;
     float vR;
     float o;
+    float pX,pY;
     
     void setup();
     void draw();
