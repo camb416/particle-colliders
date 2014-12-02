@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include "ofMain.h"
 
+
 class Boid{
 public:
     // the boid
@@ -27,6 +28,8 @@ public:
     void setup();
     void draw();
     void update();
+    
+    vector<ofPoint> tail;
 };
 
 #endif /* defined(__explosions__Boid__) */

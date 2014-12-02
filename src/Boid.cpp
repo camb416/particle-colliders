@@ -7,7 +7,7 @@
 //
 
 #include "Boid.h"
-
+#define TAILLENGTH 16
 
 void Boid::setup(){
     // the boid
@@ -31,12 +31,21 @@ void Boid::setup(){
     
     pX = x;
     pY = y;
+    
+    for(int i=0;i<TAILLENGTH; i++){
+        tail.push_back(ofPoint(x,y));
+    }
 }
 void Boid::update(){
    // size *= 0.99f;
 
     pX = x;
     pY = y;
+    
+    for(int i=TAILLENGTH-1;i>0; i--){
+        tail.at(i).set(tail.at(i-1).x,tail.at(i-1).y);
+    }
+   
     
     //vF *= 0.99f;
     //vR *= 0.99f;
@@ -45,7 +54,7 @@ void Boid::update(){
     //vY = sin(r)*vF;
     
     if(ofGetMousePressed()){
-        aF = -128.0f/ MAX(ofDistSquared(x, y, ofGetMouseX(), ofGetMouseY()),64);
+        aF = -128.0f/ MAX(ofDistSquared(x, y, ofGetMouseX(), ofGetMouseY()),256);
         
     } else {
         aF = 0;
@@ -59,8 +68,13 @@ void Boid::update(){
     vX += aX;
     vY += aY;
     
-    vX *= 0.98f;
-    vY *= 0.98f;
+    //vX = MAX(MIN(vX,5),-5);
+    //vY = MAX(MIN(vY,5),-5);
+    
+    vX *= 0.97f;
+    vY *= 0.97f;
+    
+    
     //vF = sqrt(vX*vX+vY*vY);
     //vF*=0.99f;
     
@@ -70,13 +84,16 @@ void Boid::update(){
     
     x += vX;
     y += vY;
+     tail.at(0).set(x,y);
     
     if(y+vY>ofGetHeight()){
         y = ofGetHeight();
         vY*=-0.9f;
         vX*=0.9f;
     }
-    
+    size = aF;
+    if(size<0) size *= -1.0f;
+    size += 0.5f;
 
     
 }
@@ -86,7 +103,24 @@ void Boid::draw(){
     // ofSetColor(255,255,255,o*255);
    // ofLine(x-1,y-1,pX-1,pY-1);
     //ofCircle(x-1,y-1,size);
-    ofSetColor(0,0,0,o*255);
+    ofSetColor(255,255,255,64);
+    for(int i=1;i<TAILLENGTH; i++){
+        
+        //ofCircle(x,y,size);
+        ofLine(tail.at(i-1).x-1,tail.at(i-1).y-1,tail.at(i).x-1,tail.at(i).y-1);
+    }
+    
+    ofSetColor(0,0,0,64);
+for(int i=1;i<TAILLENGTH; i++){
+
     //ofCircle(x,y,size);
-    ofLine(x,y,pX,pY);
+    ofLine(tail.at(i-1).x,tail.at(i-1).y,tail.at(i).x,tail.at(i).y);
+}
+    
+    
+    
+    ofSetColor(0,0,0,255);
+    ofCircle(x,y,size);
+    
+    
 }

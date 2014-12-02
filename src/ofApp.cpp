@@ -1,6 +1,6 @@
 #include "ofApp.h"
 
-int numBoids = 1024;
+int numBoids = 256;
 //--------------------------------------------------------------
 void ofApp::setup(){
 
@@ -11,7 +11,7 @@ void ofApp::setup(){
         
     }
     
-    //ofSetBackgroundAuto(false);
+     ofSetBackgroundAuto(false);
     ofBackground(255);
 }
 
@@ -36,7 +36,8 @@ void ofApp::draw(){
         Boid * b = boids.at(i);
         b->draw();
         //ofLine(boids.at(i)->x, boids.at(i)->y,boids.at(i-1)->x,boids.at(i-1)->y);
-         if(lineCount<lineMax){
+       /*
+        if(lineCount<lineMax){
         for(int j=0;j<i;j++){
             Boid * b2 = boids.at(j);
            
@@ -48,6 +49,7 @@ void ofApp::draw(){
             }
             
         }
+        */
     }
   //  ofEndShape();
 
