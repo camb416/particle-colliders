@@ -36,6 +36,9 @@ void Boid::setup(){
         tail.push_back(ofPoint(x,y));
     }
 }
+
+float coolDown = 1.0f;
+
 void Boid::update(){
    // size *= 0.99f;
 
@@ -53,13 +56,17 @@ void Boid::update(){
     //vX = cos(r)*vF;
     //vY = sin(r)*vF;
     
+        float mouseR = atan2(y-ofGetMouseY(),x-ofGetMouseX());
+    
     if(ofGetMousePressed()){
         aF = -256.0f/ MAX(ofDistSquared(x, y, ofGetMouseX(), ofGetMouseY()),256);
         
     } else {
-        aF = 0;
+        aF = 0.1f*coolDown;
+        coolDown*=0.999f;
+        mouseR = PI/2;
     }
-    float mouseR = atan2(y-ofGetMouseY(),x-ofGetMouseX());
+
     aX = cos(mouseR)*aF;
     aY = sin(mouseR)*aF;
     
@@ -103,11 +110,12 @@ void Boid::draw(){
     // ofSetColor(255,255,255,o*255);
    // ofLine(x-1,y-1,pX-1,pY-1);
     //ofCircle(x-1,y-1,size);
-    ofSetColor(255,255,255,64);
+    ofSetColor(0,0,0,4);
+    ofNoFill();
     for(int i=1;i<TAILLENGTH; i++){
         
-        //ofCircle(x,y,size);
-        ofLine(tail.at(i-1).x-1,tail.at(i-1).y-1,tail.at(i).x-1,tail.at(i).y-1);
+        ofCircle(x,y,size*2);
+        //ofLine(tail.at(i-1).x-1,tail.at(i-1).y-1,tail.at(i).x-1,tail.at(i).y-1);
     }
     
     ofSetColor(0,0,0,64);
@@ -117,10 +125,10 @@ for(int i=1;i<TAILLENGTH; i++){
     ofLine(tail.at(i-1).x,tail.at(i-1).y,tail.at(i).x,tail.at(i).y);
 }
     
-    
+    ofFill();
     
     ofSetColor(0,0,0,255);
-    ofCircle(x,y,size);
+    ofCircle(x,y,size/2);
     
     
 }
