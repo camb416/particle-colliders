@@ -7,7 +7,7 @@
 //
 
 #include "Boid.h"
-#define TAILLENGTH 16
+#define TAILLENGTH 32
 
 void Boid::setup(){
     // the boid
@@ -54,7 +54,7 @@ void Boid::update(){
     //vY = sin(r)*vF;
     
     if(ofGetMousePressed()){
-        aF = -128.0f/ MAX(ofDistSquared(x, y, ofGetMouseX(), ofGetMouseY()),256);
+        aF = -256.0f/ MAX(ofDistSquared(x, y, ofGetMouseX(), ofGetMouseY()),256);
         
     } else {
         aF = 0;

@@ -27,8 +27,8 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofSetColor(255,255,255,4);
-    ofRect(0,0,ofGetWidth(),ofGetHeight());
+   // ofSetColor(255,255,255,4);
+   // ofRect(0,0,ofGetWidth(),ofGetHeight());
     
     
     int lineCount = 0;
