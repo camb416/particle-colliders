@@ -9,3 +9,5 @@
 <img src="doc/Screen Shot 2014-12-02 at 3.30.41 PM.png" />
 <img src="doc/Screen Shot 2014-12-02 at 4.18.07 PM.png" />
 <img src="doc/splasher.gif" />
+![inky mess](doc/Screen Shot 2015-02-01 at 5.53.06 PM.png)
+![inky geiger](doc/Screen Shot 2015-02-01 at 6.08.34 PM.png)
