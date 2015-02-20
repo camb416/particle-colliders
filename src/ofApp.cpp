@@ -1,6 +1,6 @@
 #include "ofApp.h"
 
-int numBoids = 32;
+int numBoids = 1024;
 //--------------------------------------------------------------
 void ofApp::setup(){
 

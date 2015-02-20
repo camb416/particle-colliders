@@ -10,6 +10,7 @@
 #define TAILLENGTH 32
 
 void Boid::setup(){
+    tailLength = ofRandom(32)+8;
     // the boid
     // float x,y;
     // float vX,vY,vF;
@@ -29,12 +30,12 @@ void Boid::setup(){
     vX = cos(r)*vF;
     vY = sin(r)*vF;
     
-    c = ofColor(ofRandom(255));
+    c = ofColor(ofRandom(64)+(255-64));
     
     pX = x;
     pY = y;
     
-    for(int i=0;i<TAILLENGTH; i++){
+    for(int i=0;i<tailLength; i++){
         tail.push_back(ofPoint(x,y));
     }
 }
@@ -47,7 +48,7 @@ void Boid::update(){
     pX = x;
     pY = y;
     
-    for(int i=TAILLENGTH-1;i>0; i--){
+    for(int i=tailLength-1;i>0; i--){
         tail.at(i).set(tail.at(i-1).x,tail.at(i-1).y);
     }
    
@@ -112,9 +113,12 @@ void Boid::draw(){
     // ofSetColor(255,255,255,o*255);
    // ofLine(x-1,y-1,pX-1,pY-1);
     //ofCircle(x-1,y-1,size);
-    ofSetColor(c);
     ofFill();
-    for(int i=1;i<TAILLENGTH; i++){
+    ofSetColor(0,0,0,32);
+    ofCircle(x,y,size*2.5);
+    ofSetColor(c);
+    
+    for(int i=1;i<tailLength; i++){
         
         ofCircle(x,y,size*2);
         //ofLine(tail.at(i-1).x-1,tail.at(i-1).y-1,tail.at(i).x-1,tail.at(i).y-1);

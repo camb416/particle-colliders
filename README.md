@@ -13,3 +13,4 @@
 ![inky geiger](doc/Screen Shot 2015-02-01 at 6.08.34 PM.png)
 ![jr paint 1](doc/Screen Shot 2015-02-20 at 12.29.59 AM.png)
 ![jr paint 2](doc/Screen Shot 2015-02-20 at 12.30.46 AM.png)
+![matrix bug](doc/Screen Shot 2015-02-20 at 12.45.37 AM.png)

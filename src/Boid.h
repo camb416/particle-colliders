@@ -16,6 +16,8 @@
 class Boid{
 public:
     // the boid
+    
+    int tailLength;
     float x,y;
     float vX,vY,vF;
     float r;
