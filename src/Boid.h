@@ -29,6 +29,8 @@ public:
     void draw();
     void update();
     
+    ofColor c;
+    
     vector<ofPoint> tail;
 };
 

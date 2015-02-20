@@ -29,6 +29,8 @@ void Boid::setup(){
     vX = cos(r)*vF;
     vY = sin(r)*vF;
     
+    c = ofColor(ofRandom(255));
+    
     pX = x;
     pY = y;
     
@@ -110,8 +112,8 @@ void Boid::draw(){
     // ofSetColor(255,255,255,o*255);
    // ofLine(x-1,y-1,pX-1,pY-1);
     //ofCircle(x-1,y-1,size);
-    ofSetColor(0,0,0,4);
-    ofNoFill();
+    ofSetColor(c);
+    ofFill();
     for(int i=1;i<TAILLENGTH; i++){
         
         ofCircle(x,y,size*2);
@@ -119,15 +121,12 @@ void Boid::draw(){
     }
     
     ofSetColor(0,0,0,64);
-for(int i=1;i<TAILLENGTH; i++){
 
-    //ofCircle(x,y,size);
-    ofLine(tail.at(i-1).x,tail.at(i-1).y,tail.at(i).x,tail.at(i).y);
-}
     
     ofFill();
+    ofSetColor(c);
     
-    ofSetColor(0,0,0,255);
+    //ofSetColor(0,0,0,255);
     ofCircle(x,y,size/2);
     
     
